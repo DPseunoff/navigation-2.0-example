@@ -73,6 +73,11 @@ class AppRouterDelegate extends RouterDelegate<AppPagesConfig>
   }
 
   bool _onPopPage(Route<Object?> route, Object? result) {
+    /// Не даем закрыть единственную страницу в стеке навигации
+    if (route.isFirst && route.isActive) {
+      return false;
+    }
+
     // Для объяснения данного действия рекомендую посмотреть этот комментарий
     // на stackoverflow: <https://stackoverflow.com/a/65810416>
     if (!route.didPop(result)) {
@@ -80,11 +85,7 @@ class AppRouterDelegate extends RouterDelegate<AppPagesConfig>
     }
 
     // Производим pop с помощью нашего [RouterPagesNotifier], если можем
-    if (manager.canPop) {
-      manager.pop();
-      return true;
-    }
-
-    return false;
+    manager.pop();
+    return true;
   }
 }

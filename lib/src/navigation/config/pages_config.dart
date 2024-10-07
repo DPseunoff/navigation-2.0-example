@@ -1,7 +1,9 @@
 import 'page_config.dart';
 
-/// Наша конфигурация, типизированная под использование [PageConfiguration].
-typedef AppPagesConfig = RouterPagesStack<PageConfiguration>;
+/// Наша конфигурация, обобщенная под использование [PageConfiguration].
+class AppPagesConfig extends RouterPagesStack<PageConfiguration> {
+  AppPagesConfig(super.stack);
+}
 
 /// Реализация стека на основе [List], которая и будет нашей конфигурацией
 /// навигации в приложении. Для своего приложения вы можете создать свое

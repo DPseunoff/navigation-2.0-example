@@ -56,6 +56,8 @@ class RouterPagesManagerImpl extends ChangeNotifier
     }
 
     _pagesConfig.pop();
+
+    // Сообщаем слушателю об удалении пути из стека
     notifyListeners();
   }
 
@@ -74,12 +76,16 @@ class RouterPagesManagerImpl extends ChangeNotifier
       argument: argument,
     );
     _pagesConfig.push(configuration);
+
+    // Сообщаем слушателю о добавлении пути из стека
     notifyListeners();
   }
 
   @override
   void pushConfigsWithReplacement(List<PageConfiguration> configs) {
     _pagesConfig.pushAllWithReplacement(configs);
+
+    // Сообщаем слушателю о замене стека
     notifyListeners();
   }
 }
