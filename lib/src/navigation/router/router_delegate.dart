@@ -35,6 +35,9 @@ class AppRouterDelegate extends RouterDelegate<AppPagesConfig>
         key: navigatorKey,
         pages: _resolvePages(manager.pages).toList(growable: false),
         onPopPage: _onPopPage,
+        // onDidRemovePage: (page) {
+        //   manager.removePageByName(page.name);
+        // },
       );
 
   /// Метод вызывается сразу после работы

@@ -13,7 +13,7 @@ class AppRouteInformationParser extends RouteInformationParser<AppPagesConfig> {
   ) {
     final pages = <PageConfiguration>[];
 
-    final uri = Uri.parse(routeInformation.location ?? '/');
+    final uri = routeInformation.uri;
     // Сегменты пути и есть наш стек навигации, обработаем каждый
     final segments = uri.pathSegments;
     // Возьмем информацию из queryParams для создания аргументов
@@ -56,6 +56,8 @@ class AppRouteInformationParser extends RouteInformationParser<AppPagesConfig> {
       location += pageConfig.page.location;
     }
 
-    return RouteInformation(location: location);
+    return RouteInformation(
+      uri: Uri.parse(location),
+    );
   }
 }
